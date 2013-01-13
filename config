@@ -1,0 +1,23 @@
+# -*- mode: makefile -*-
+
+TEMPLATES = template.tmpl
+SOURCE = site
+OUTPUT = out
+
+*.md:
+  config
+  rename *.html
+  inner-template
+  directorify
+  markdown
+  template post
+
+index.md:
+  config
+  inner-template
+  rename index.html
+  markdown
+  template page
+
+static/*.css:
+  config

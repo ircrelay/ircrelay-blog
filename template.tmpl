@@ -1,0 +1,74 @@
+{{define "header"}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRCRelay | {{ if .Title }} {{ .Title }}{{ end }}</title>
+    <link href='https://fonts.googleapis.com/css?family=Inika:400,700' rel='stylesheet' type='text/css'>
+    <link href="/static/bootstrap.css" rel="stylesheet" type='text/css'>
+    <link href="/static/custom.css" rel="stylesheet" type='text/css'>
+    <link href="/static/syntax.css" rel="stylesheet" type='text/css'>
+    <script type="text/javascript" src="/static/highlight.pack.js"></script>
+  </head>
+  <body>
+    <script>
+    hljs.initHighlightingOnLoad();
+    </script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36173200-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+    <div class="container">
+           <div class="span3 offset2">
+               <h1><a href="/" tabindex="-1">IRCRelay > Blog</a></h1>
+            </div>
+            <div class="span3">
+                <ul class="header-links">
+                     <li class="top-menu"><a href="https://www.ircrelay.com" tabindex="-1">What's IRCRelay?</a></li>
+                 </ul>
+            </div>
+{{end}}
+
+{{define "footer"}}
+      <div class="footer">
+        <div class="span6 offset2">
+          <p><em>You can learn more about us on our <a href="https://www.ircrelay.com">homepage</a>. Content is copyright IRCRelay.</em></em></p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+{{end}}
+
+{{define "page"}}{{ template "header" . }}
+      <div class="span6 offset2">
+              <div class="span6 section no-left-margin">
+                <div class="post-list">
+                  {{ .Content }}
+                </div>
+              </div>
+      </div>
+  {{ template "footer" . }}
+{{end}}
+
+{{define "post"}}{{ template "header" . }}
+      <div class="span6 offset2">
+              <div class="span6 section no-left-margin">
+                  <h2 class="post-title">{{ .Title }}</h3>
+                  <em class="post-meta-data">Posted on {{ .Date.Format "Monday, January 02, 2006" }} by <a href="https://twitter.com/{{ .Other.Author }}">{{ .Other.Author }}</a></em>
+                  {{ .Content }}
+              </div>
+      </div>
+{{ template "footer" . }}
+
+{{end}}
